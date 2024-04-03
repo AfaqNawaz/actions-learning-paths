@@ -26,15 +26,15 @@ jobs:
       - run: npm test
   deploy:
      needs: test
+     runs-on: ubuntu-latest
 
      permissions:
        contents: write
        pages: write 
-       id_token: write
+       id-token: write
      environment:
       name: hello
       url: ${{steps.deployment.outputs.pages_url}}
-      runs-on: ubuntu-latest
      steps:
        - name: deploy repo
          uses: actions/checkout@v3
